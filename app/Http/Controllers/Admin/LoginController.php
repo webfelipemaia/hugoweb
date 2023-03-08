@@ -32,6 +32,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
+        
         return view('admin.auth.login');
     }
 
@@ -42,6 +43,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        dd($request);
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'

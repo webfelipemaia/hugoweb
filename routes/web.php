@@ -32,3 +32,6 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Auth::routes();
+require __DIR__.'/auth.php';
+require 'admin.php';
+
