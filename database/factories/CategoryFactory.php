@@ -22,6 +22,7 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $faker = Factory::create();
         return [
             'name'          =>  $faker->name,
             'description'   =>  $faker->realText(100),
