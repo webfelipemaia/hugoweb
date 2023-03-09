@@ -98,6 +98,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
         $collection = collect($params)->except('_token');
 
+        $image = '';
         if ($collection->has('image') && ($params['image'] instanceof  UploadedFile)) {
 
             if ($category->image != null) {
@@ -146,6 +147,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             ->listsFlattened('name');
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function findBySlug($slug)
     {
         return Category::with('products')
