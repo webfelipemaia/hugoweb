@@ -24,20 +24,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($orders as $order)
-                                <tr>
-                                    <th scope="row">{{ $order->order_number }}</th>
-                                    <td>{{ $order->first_name }}</td>
-                                    <td>{{ $order->last_name }}</td>
-                                    <td>{{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}</td>
-                                    <td>{{ $order->item_count }}</td>
-                                    <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
-                                </tr>
-                            @empty
+                            
+                            @if($orders)
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <th scope="row">{{ $order->order_number }}</th>
+                                        <td>{{ $order->first_name }}</td>
+                                        <td>{{ $order->last_name }}</td>
+                                        <td>{{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}</td>
+                                        <td>{{ $order->item_count }}</td>
+                                        <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <div class="col-sm-12">
                                     <p class="alert alert-warning">No orders to display.</p>
                                 </div>
-                            @endforelse
+                            @endif
+                            
                         </tbody>
                     </table>
                 </main>
