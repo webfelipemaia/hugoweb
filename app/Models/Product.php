@@ -70,4 +70,12 @@ class Product extends Model
     {
         return $this->hasMany(ProductAttribute::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productInformationTypes()
+    {
+        return $this->hasMany(ProductInformationType::class);
+    }
 }
